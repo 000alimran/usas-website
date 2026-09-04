@@ -6,7 +6,14 @@ export function SiteHeader() {
     <header className="site-header">
       <div className="shell header-inner">
         <Link className="brand" href="/" aria-label="USAS home">
-          <span className="brand-mark">U</span>
+          <img
+            src="/usas-mark.svg"
+            alt=""
+            aria-hidden="true"
+            width="30"
+            height="40"
+            style={{ objectFit: "contain", flex: "0 0 auto" }}
+          />
           <span>
             <strong>{site.shortName}</strong>
             <small>Shyamnagar</small>
