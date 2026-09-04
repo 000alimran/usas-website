@@ -1,0 +1,44 @@
+:root {
+  --ink: #2b1726;
+  --deep: #54044f;
+  --deep-2: #6d0b5c;
+  --acid: #ff2d34;
+  --line: rgba(84, 4, 79, 0.16);
+  --shadow: 0 24px 80px rgba(84, 4, 79, 0.12);
+  --brand-magenta: #951749;
+  --brand-plum: #54044f;
+  --brand-red: #ff2d34;
+}
+
+::selection {
+  background: var(--brand-red);
+  color: var(--brand-plum);
+}
+
+.nav-item:hover > a,
+.nav-item:focus-within > a,
+.card-index,
+.program-number {
+  color: var(--brand-magenta);
+}
+
+.hero::before {
+  border-color: rgba(255, 45, 52, 0.2);
+  box-shadow: 0 0 0 80px rgba(149, 23, 73, 0.04), 0 0 0 160px rgba(84, 4, 79, 0.03);
+}
+
+.site-header {
+  border-bottom-color: rgba(84, 4, 79, 0.09);
+}
+
+.brand img {
+  display: block;
+}
+
+.brand strong {
+  color: var(--brand-plum);
+}
+
+.brand-inverse strong {
+  color: var(--white);
+}
