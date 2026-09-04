@@ -7,7 +7,14 @@ export function SiteFooter() {
       <div className="shell footer-grid">
         <div className="footer-brand">
           <div className="brand brand-inverse">
-            <span className="brand-mark">U</span>
+            <img
+              src="/usas-mark.svg"
+              alt=""
+              aria-hidden="true"
+              width="38"
+              height="52"
+              style={{ objectFit: "contain", flex: "0 0 auto" }}
+            />
             <span>
               <strong>{site.shortName}</strong>
               <small>Shyamnagar</small>
