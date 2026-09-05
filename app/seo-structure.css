@@ -1,0 +1,76 @@
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 24px;
+  margin-bottom: 34px;
+  font-size: 12px;
+  letter-spacing: .04em;
+  color: rgba(255, 255, 255, .62);
+}
+
+.breadcrumbs > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.breadcrumbs a {
+  transition: opacity .2s ease;
+}
+
+.breadcrumbs a:hover {
+  opacity: .72;
+}
+
+.breadcrumbs [aria-current="page"] {
+  color: rgba(255, 255, 255, .95);
+  font-weight: 700;
+}
+
+.breadcrumb-separator {
+  color: rgba(255, 255, 255, .3);
+}
+
+.hub-section {
+  border-top: 1px solid var(--line);
+}
+
+.hub-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.hub-links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 58px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--white);
+  font-size: 14px;
+  font-weight: 750;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.hub-links a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(6, 38, 33, .08);
+}
+
+@media (max-width: 720px) {
+  .breadcrumbs {
+    padding-top: 18px;
+    margin-bottom: 24px;
+    font-size: 11px;
+  }
+
+  .hub-links {
+    grid-template-columns: 1fr;
+  }
+}
