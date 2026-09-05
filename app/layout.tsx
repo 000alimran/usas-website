@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/site-header";
 import { site } from "@/lib/site-data";
 import "./globals.css";
 import "./brand.css";
+import "./seo-structure.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${site.domain}`),
