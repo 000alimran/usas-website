@@ -5,6 +5,7 @@ import { site } from "@/lib/site-data";
 import "./globals.css";
 import "./brand.css";
 import "./seo-structure.css";
+import "./mega-menu.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${site.domain}`),
