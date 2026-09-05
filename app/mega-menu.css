@@ -1,0 +1,68 @@
+.mega-copy {
+  display: flex;
+  flex-direction: column;
+}
+
+.mega-section-intro {
+  margin-bottom: 0;
+}
+
+.mega-context {
+  margin-top: auto;
+  min-height: 132px;
+  padding: 18px;
+  border: 2px solid rgba(255, 119, 0, 0.95);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  transition: border-color .2s ease, background .2s ease;
+}
+
+.mega-context-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #ff7a00;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.mega-context p {
+  margin: 0;
+  color: rgba(255, 255, 255, .82);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.mega-links a.is-active,
+.mega-links a:hover,
+.mega-links a:focus-visible {
+  background: var(--paper);
+}
+
+.mega-links a:focus-visible {
+  outline: 2px solid var(--acid);
+  outline-offset: 2px;
+}
+
+.mobile-context-link {
+  display: grid;
+  gap: 4px;
+}
+
+.mobile-context-link small {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+  .mobile-group {
+    gap: 14px;
+  }
+
+  .mobile-context-link {
+    padding: 4px 0;
+  }
+}
