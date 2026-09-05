@@ -15,10 +15,7 @@ export function SiteFooter() {
               height="52"
               style={{ objectFit: "contain", flex: "0 0 auto" }}
             />
-            <span>
-              <strong>{site.shortName}</strong>
-              <small>Shyamnagar</small>
-            </span>
+            <strong>{site.shortName}</strong>
           </div>
           <h2>{site.tagline}</h2>
           <p>{site.description}</p>
