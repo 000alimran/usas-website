@@ -14,10 +14,7 @@ export function SiteHeader() {
             height="40"
             style={{ objectFit: "contain", flex: "0 0 auto" }}
           />
-          <span>
-            <strong>{site.shortName}</strong>
-            <small>Shyamnagar</small>
-          </span>
+          <strong>{site.shortName}</strong>
         </Link>
 
         <nav className="desktop-nav" aria-label="Primary navigation">
