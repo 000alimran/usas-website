@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { MegaMenu } from "@/components/mega-menu";
+import { getNavDescription } from "@/lib/nav-descriptions";
 import { mainNav, site } from "@/lib/site-data";
 
 export function SiteHeader() {
@@ -21,20 +23,7 @@ export function SiteHeader() {
           {mainNav.map((item) => (
             <div className="nav-item" key={item.href}>
               <Link href={item.href}>{item.label}</Link>
-              {item.children && (
-                <div className="mega-card">
-                  <div className="mega-copy">
-                    <span className="kicker">Explore</span>
-                    <strong>{item.label}</strong>
-                    <p>Discover the people, programs and ideas shaping USAS.</p>
-                  </div>
-                  <div className="mega-links">
-                    {item.children.map((child) => (
-                      <Link href={child.href} key={child.href}>{child.label}<span>↗</span></Link>
-                    ))}
-                  </div>
-                </div>
-              )}
+              <MegaMenu item={item} />
             </div>
           ))}
         </nav>
@@ -48,7 +37,10 @@ export function SiteHeader() {
               <div key={item.href} className="mobile-group">
                 <Link href={item.href}><strong>{item.label}</strong></Link>
                 {item.children?.slice(0, 5).map((child) => (
-                  <Link href={child.href} key={child.href}>{child.label}</Link>
+                  <Link href={child.href} key={child.href} className="mobile-context-link">
+                    <span>{child.label}</span>
+                    <small>{getNavDescription(child.href)}</small>
+                  </Link>
                 ))}
               </div>
             ))}
