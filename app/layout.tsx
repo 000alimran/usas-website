@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { SiteShell } from "@/components/site-shell";
 import { site } from "@/lib/site-data";
 import "./globals.css";
 import "./brand.css";
 import "./seo-structure.css";
 import "./mega-menu.css";
+import "./admin/admin.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${site.domain}`),
@@ -31,10 +33,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body>
-        <a className="skip-link" href="#main">Skip to content</a>
-        <SiteHeader />
-        <main id="main">{children}</main>
-        <SiteFooter />
+        <SiteShell header={<SiteHeader />} footer={<SiteFooter />}>
+          {children}
+        </SiteShell>
       </body>
     </html>
   );
