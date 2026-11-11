@@ -39,7 +39,7 @@ export default async function AdminLoginPage({ searchParams }: Props) {
           <button type="submit">Sign in</button>
         </form>
 
-        <Link className="admin-back" href="/">← Back to usasbd.org</Link>
+        <div className="admin-auth-links">\n          <Link className="admin-back" href="/admin/setup">First time? Activate the first admin</Link>\n          <Link className="admin-back" href="/">← Back to usasbd.org</Link>\n        </div>
       </section>
     </main>
   );
