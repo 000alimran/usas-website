@@ -1,64 +1,66 @@
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
+import { AdminNav } from "@/components/admin-nav";
+import { requireAdminProfile, roleLabel } from "@/lib/admin-auth";
 import { logout } from "../login/actions";
 
 export const dynamic = "force-dynamic";
 
-const allowedRoles = new Set([
-  "super_admin",
-  "admin",
-  "editor",
-  "membership_manager",
-  "event_manager",
-  "program_manager",
-  "finance",
-  "contributor",
-]);
-
 export default async function AdminWorkspaceLayout({ children }: { children: React.ReactNode }) {
-  const supabase = await createClient();
-  const { data } = await supabase.auth.getClaims();
-  const userId = data?.claims?.sub;
-
-  if (!userId) redirect("/admin/login");
-
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("full_name, role")
-    .eq("id", userId)
-    .single();
-
-  if (!profile || !allowedRoles.has(profile.role)) {
-    redirect("/admin/login?error=unauthorized");
-  }
+  const profile = await requireAdminProfile();
 
   return (
     <div className="admin-workspace">
       <aside className="admin-sidebar">
-        <Link className="admin-brand" href="/admin">
-          <img src="/usas-mark.svg" alt="" width="32" height="44" />
-          <strong>USAS Admin</strong>
-        </Link>
+        <div>
+          <Link className="admin-brand" href="/admin">
+            <img src="/usas-mark.svg" alt="" width="34" height="46" />
+            <span>
+              <strong>USAS</strong>
+              <small>Administration</small>
+            </span>
+          </Link>
 
-        <nav className="admin-nav" aria-label="Admin navigation">
-          <Link href="/admin">Overview</Link>
-          <Link href="/admin/content">Content</Link>
-          <Link href="/admin/community">Community</Link>
-          <Link href="/admin/programs">Programs</Link>
-          <Link href="/admin/events">Events</Link>
-          <Link href="/admin/reports">Reports</Link>
-          <Link href="/admin/settings">Settings</Link>
-        </nav>
+          <AdminNav role={profile.role} />
+        </div>
 
         <div className="admin-sidebar-footer">
-          <strong>{profile.full_name || "USAS Team"}</strong>
-          <span>{profile.role.replaceAll("_", " ")}</span>
+          <div className="admin-user">
+            <span className="admin-user-avatar" aria-hidden="true">
+              {profile.fullName.slice(0, 1).toUpperCase()}
+            </span>
+            <span>
+              <strong>{profile.fullName}</strong>
+              <small>{roleLabel(profile.role)}</small>
+            </span>
+          </div>
           <form action={logout}>
             <button className="admin-logout" type="submit">Sign out</button>
           </form>
         </div>
       </aside>
+
+      <div className="admin-mobile-bar">
+        <Link className="admin-mobile-brand" href="/admin">
+          <img src="/usas-mark.svg" alt="" width="25" height="34" />
+          <strong>USAS Admin</strong>
+        </Link>
+        <details className="admin-mobile-menu">
+          <summary aria-label="Open admin navigation">
+            <span></span><span></span><span></span>
+          </summary>
+          <div className="admin-mobile-panel">
+            <AdminNav role={profile.role} />
+            <div className="admin-mobile-account">
+              <strong>{profile.fullName}</strong>
+              <small>{roleLabel(profile.role)}</small>
+              <form action={logout}>
+                <button className="admin-logout" type="submit">Sign out</button>
+              </form>
+            </div>
+          </div>
+        </details>
+      </div>
+
       <section className="admin-main">{children}</section>
     </div>
   );
