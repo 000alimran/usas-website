@@ -869,3 +869,25 @@
     font-size: 31px;
   }
 }
+
+
+.admin-notice {
+  margin-bottom: 18px;
+  padding: 12px 14px;
+  border: 1px solid rgba(36, 100, 61, .12);
+  border-radius: 12px;
+  background: #edf7f0;
+  color: #24643d;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.admin-auth-links {
+  display: grid;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.admin-auth-links .admin-back {
+  margin-top: 0;
+}
