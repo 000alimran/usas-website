@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { requireAdminProfile, SECTION_ROLES } from "@/lib/admin-auth";
+import type { Json } from "@/lib/database.types";
 
 function textValue(formData: FormData, key: string) {
   return String(formData.get(key) ?? "").trim();
@@ -27,7 +28,7 @@ async function logAction(
   action: string,
   entityType: string,
   entityId?: string | null,
-  metadata: Record<string, unknown> = {},
+  metadata: Json = {},
 ) {
   const supabase = await createClient();
   await supabase.from("audit_logs").insert({
