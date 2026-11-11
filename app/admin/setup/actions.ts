@@ -23,9 +23,6 @@ export async function activateFirstAdmin(formData: FormData) {
     const signUp = await supabase.auth.signUp({
       email,
       password,
-      options: {
-        emailRedirectTo: "/admin/setup",
-      },
     });
 
     if (signUp.error || !signUp.data.user) {
